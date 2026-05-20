@@ -56,11 +56,11 @@ Wait until node shows `Ready`.
 
 ## Step 2 — Validate the Helm Chart
 
-Run from the folder **containing** `guestbook-chart/`:
+Run from the folder **containing** `k8s_chart/`:
 
 ```powershell
-helm lint ./guestbook-chart
-helm template guestbook ./guestbook-chart
+helm lint ./k8s_chart
+helm template guestbook ./k8s_chart
 ```
 
 ---
@@ -68,7 +68,7 @@ helm template guestbook ./guestbook-chart
 ## Step 3 — Deploy with Helm
 
 ```powershell
-helm install guestbook ./guestbook-chart --create-namespace --namespace guestbook
+helm install guestbook ./k8s_chart --create-namespace --namespace guestbook
 ```
 
 Verify everything is running:
@@ -149,7 +149,7 @@ kubectl scale deployment frontend -n guestbook --replicas=5
 kubectl get pods -n guestbook -w
 
 # Upgrade after changing values.yaml
-helm upgrade guestbook ./guestbook-chart
+helm upgrade guestbook ./k8s_chart
 
 # Rollback
 helm rollback guestbook 1
