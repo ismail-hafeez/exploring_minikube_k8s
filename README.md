@@ -30,33 +30,14 @@ Install the following:
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) — must be running in the background
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Helm](https://github.com/helm/helm/releases) — download `windows-amd64.zip`, extract, move `helm.exe` to `C:\Windows\System32\`
-
+- [Helm](https://github.com/helm/helm/releases)
+- 
 Verify installs:
 ```powershell
 docker --version
 minikube version
 kubectl version --client
 helm version
-```
-
----
-
-## Folder Structure
-
-```
-guestbook-chart/
-├── Chart.yaml
-├── values.yaml
-└── templates/
-    ├── namespace.yaml
-    ├── configmap.yaml
-    ├── redis-pvc.yaml
-    ├── redis-deployment.yaml
-    ├── redis-service.yaml
-    ├── frontend-deployment.yaml
-    ├── frontend-service.yaml
-    └── ingress.yaml
 ```
 
 ---
