@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook-config
+  namespace: {{ .Values.namespace }}
+data:
+  REDIS_HOST: {{ .Values.configmap.redisHost }}
+  APP_MESSAGE: {{ .Values.configmap.appMessage | quote }}

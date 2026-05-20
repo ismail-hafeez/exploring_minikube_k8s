@@ -1,0 +1,32 @@
+namespace: guestbook
+
+redis:
+  image: redis:alpine
+  port: 6379
+  storage: 256Mi
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "100m"
+    limits:
+      memory: "128Mi"
+      cpu: "250m"
+
+frontend:
+  image: nginx:alpine
+  replicas: 3
+  port: 80
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "100m"
+    limits:
+      memory: "128Mi"
+      cpu: "250m"
+
+configmap:
+  redisHost: "redis"
+  appMessage: "Welcome to my Guestbook!"
+
+ingress:
+  host: guestbook.local

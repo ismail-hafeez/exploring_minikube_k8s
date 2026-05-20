@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.frontend.replicas }}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: {{ .Values.frontend.image }}
+        ports:
+        - containerPort: {{ .Values.frontend.port }}
+        envFrom:
+        - configMapRef:
+            name: guestbook-config
+        resources:
+          requests:
+            memory: {{ .Values.frontend.resources.requests.memory | quote }}
+            cpu: {{ .Values.frontend.resources.requests.cpu | quote }}
+          limits:
+            memory: {{ .Values.frontend.resources.limits.memory | quote }}
+            cpu: {{ .Values.frontend.resources.limits.cpu | quote }}
